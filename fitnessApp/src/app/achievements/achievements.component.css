@@ -1,0 +1,47 @@
+.progress-bar {
+    height: 40px;
+    background-color: darkred;
+
+  }
+
+
+ 
+  
+  .progress-button {
+    background: url('medal.png') no-repeat center;
+    background-size: cover;
+    width: 50px; 
+    height: 50px; 
+    
+    opacity: 0.5; 
+  }
+
+  .trophy-button {
+    background: url('trophy.png') no-repeat center;
+    background-size: cover;
+    width: 100px; 
+    height: 100px; 
+    
+  }
+  
+  .progress-container {
+    flex-grow: 1;
+    width: 100%;
+    background-color: #ccc;
+  }
+
+.empty{
+    margin-top: 1.5%;
+}
+
+
+.title{
+    font-size: 26px;
+    font-weight: 400;
+}
+
+
+.line {
+    border-width: 2px;
+    color: black;
+}

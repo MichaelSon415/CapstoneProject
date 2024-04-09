@@ -1,0 +1,75 @@
+<mat-sidenav-container class="outer-sidenav-container" *ngIf="screenWidth >= 575">
+    <mat-sidenav mode="side" opened class="horizontal-sidenav outer-sidenav">
+        <div class="navigation-items">
+            <button mat-button *ngFor="let item of outerNavItems" (click)="selectOuterItem(item.id)"
+                [class.active]="selectedOuterItem === item.id">
+                <mat-icon class="fs-1">{{item.icon}}</mat-icon>
+                <span class="fs-6">{{item.label}}</span>
+            </button>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-sidenav-container class="inner-sidenav-container">
+            <mat-sidenav mode="side" opened class="horizontal-sidenav inner-sidenav">
+                <div class="navigation-items">
+                    <ng-container *ngIf="selectedOuterItem !== 'chat'">
+                        <button mat-button *ngFor="let innerItem of getInnerItemsByOuterItem(selectedOuterItem)"
+                            [class.active]="selectedInnerItem === innerItem.id" (click)="selectInnerItem(innerItem.id)">
+                            <h2>{{innerItem.label}}</h2>
+                            <h3>{{innerItem.description}}</h3>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngIf="selectedOuterItem === 'chat'">
+                        <ng-container *ngIf="!connected">
+                            <!-- <button mat-button>
+                                <h2>Loading chat list</h2>
+                                <h3>Connecting to sendbird server...</h3>
+                            </button>
+                        </ng-container>
+                        <ng-container *ngIf="connected"> -->
+                            <button mat-button (click)="goToChatList()">
+                                <h3>Search For Your Chat</h3>
+                            </button>
+                            <button mat-button *ngFor="let channel of conversations; let i = index"
+                                [class.active]="i === activeChannelIdx" (click)="goToChatPage(channel, i)">
+                                <h2>{{channel.name}}</h2>
+                                <h3>{{getLastMessage(channel)}}</h3>
+                            </button>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-container *ngIf="screenWidth < 575">
+    <mat-toolbar class="top-nav-bar">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>{{currentComponentTitle}}</h1>
+    </mat-toolbar>
+    <!-- <mat-tab-group (selectedTabChange)="onTabChange($event)" animationDuration="0ms" headerPosition="below"
+        class="bottom-nav-bar" mat-align-tabs="center" fitInkBarToContent dynamicHeight
+        [(selectedIndex)]="activeTabIndex">
+        <mat-tab *ngFor="let item of getBottomNavItems()" class="bottom-nav-bar-btns">
+            <ng-template mat-tab-label>
+                <mat-icon>{{ item.icon }}</mat-icon>
+                {{item.label}}
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group> -->
+    <nav mat-tab-nav-bar class="bottom-nav-bar">
+        <ng-container *ngFor="let item of getBottomNavItems(); let i = index">
+            <a mat-tab-link [active]="activeTabIndex === i" (click)="onTabClick(item, i)">
+                <mat-icon>{{ item.icon }}</mat-icon>
+                {{ item.label }}
+            </a>
+        </ng-container>
+    </nav>
+    <router-outlet></router-outlet>
+</ng-container>

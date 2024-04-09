@@ -1,0 +1,94 @@
+<body>
+    <div class="container">
+        <div class="row mobile-only">
+            <div class="col">
+                <button mat-flat-button color="accent" (click)="goToAnotherPage('workout_info')">
+                    <h1>Workout</h1>
+                </button>
+            </div>
+            <div class="col">
+                <button mat-flat-button color="accent" (click)="goToAnotherPage('calorieinformation')">
+                    <h1>Nutrition</h1>
+                </button>
+            </div>
+        </div>
+        <div class="row mobile-only">
+            <div class="col">
+                <h1>Welcome back, user</h1>
+                <button mat-flat-button color="accent" (click)="openDialog()" type="send-button">
+                    <h1>Wellness Check</h1>
+                </button>
+            </div>
+            <!-- <div class="col" *ngIf="showMentalHealth">
+                <button mat-icon-button (click)="openDialog()" class="mentalwellnesspopupbutton" type="send-button">How
+                    are you feeling?</button>
+            </div> -->
+        </div>
+
+        <div class="row w-100 d-flex justify-content-center align-items-center p-3 desktop-only">
+            <div class="col">
+                <h1>Welcome back! {{userName}}</h1>
+                <div class="row">
+                    <button mat-flat-button class="profile-pic-btn col h-auto bg-transparent" disabled>
+                        <img src="./default_user_image.png" alt="Default User Profile">
+                    </button>
+                    <h2 class="col justify-content-center">{{userName}}</h2>
+                </div>
+            </div>
+            <div *ngIf="showMentalHealth" class="col">
+                <h1 class="p-0">Mental Wellness</h1>
+                <button mat-flat-button (click)="openDialog()" class="mentalwellnesspopupbutton" type="send-button"
+                    color="accent" class="w-75 p-4">How are you feeling?</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <h1>Goal</h1>
+                <ul>
+                    <li>
+                        <p>Lose 10 pounds in 2 months</p>
+                    </li>
+                    <li>
+                        <p>Feel good about myself</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <h1>Achievements</h1>
+                <div class="row">
+                    <div class="col-3 desktop-only">
+                        <button mat-flat-button class="trophy-button h-auto w-auto bg-transparent" disabled>
+                            <img src="./trophy.png" alt="Trophy Image" class="img-fluid">
+                        </button>
+                    </div>
+                    <div class="col-6 mobile-only">
+                        <button mat-flat-button class="trophy-button h-auto w-auto bg-transparent" disabled>
+                            <img src="./trophy.png" alt="Trophy Image" class="img-fluid">
+                        </button>
+                    </div>
+                    <h2 class="trophy-label col justify-content-center">{{trophyAmount}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="showGraphToggle===true || showGraphToggle===null">
+            <div class="row">
+                <div class="col-sm chart-col">
+                    <h1>Workout Progress</h1>
+                    <div class="chart-container">
+                        <canvas id="workoutChart">{{ workout_chart }}</canvas>
+                    </div>
+                </div>
+                <div class="col-sm chart-col">
+                    <h1>Today's Calorie Info</h1>
+                    <div class="chart-container">
+                        <canvas id="CalorieChart">{{ calorie_chart }}</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>

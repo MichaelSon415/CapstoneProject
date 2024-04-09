@@ -1,0 +1,76 @@
+/* mat-card-content {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+    height: 75px;
+} */
+
+
+
+.message {
+    height: 200px;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    /* or set to the height of your parent container */
+}
+
+
+.line {
+    border: none;
+    /* Remove the border */
+    height: 100%;
+    /* Define a height for your vertical line. Adjust as needed */
+    width: 2px;
+    /* Set the width to 1 pixel to make it a line */
+    background-color: black;
+    /* Color of the line. Adjust if necessary */
+    /*display: inline-block; /* So it doesn't take the full width of its container */
+}
+
+
+.title-label {
+    font-weight: 500;
+    font-style: arial;
+}
+
+.mini-title {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+
+.submit-button:hover {
+    background-color: #e2314f;
+    /* When user hovers over change color */
+
+}
+
+/* .label,
+.toggle {
+    flex: 1;
+    margin-top: 9.5%;
+    font-size: 16px;
+} */
+
+/* .vertical-line {
+    height: 750px;
+    width: 1px;
+    background-color: #000;
+    margin-left: auto;
+    margin-right: auto;
+} */

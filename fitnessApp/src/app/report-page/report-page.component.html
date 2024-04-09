@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="form-container">
+        <form [formGroup]="reportForm" (ngSubmit) = "onSubmit">
+            <div class="box-container colored-box">
+                <div class="box">
+                    <h1 class="title report-title">Report</h1>
+
+                    <!-- <div class="form-group">
+                        <label>User's Username:</label>
+                        <input matInput type="text" formControlName="username" required>
+
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <label>Reason For Report:</label>
+                        <textarea matInput type="text" placeholder="Please state your reporting reason..."
+                            formControlName="reportReason"></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id = "submit-button" class="submit-buton" type="submit-button" class="send-button" style="font-family: Arial"
+                            type="send-button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

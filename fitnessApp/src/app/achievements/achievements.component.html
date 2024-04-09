@@ -1,0 +1,147 @@
+
+
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card class="workoutEntry align-items-center">
+                <mat-card-header class="header">
+                    <mat-card-title>Achievements</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="acheivementssContent">
+
+                    <div>
+                    <div class="trophy-container">
+                        <div class="row justify-content-center">
+                          <div class="col-auto text-center">
+                            <button mat-icon-button class="trophy-button" disabled></button>
+                            <mat-label class="d-block text-center">{{trophyAmount}}</mat-label>
+                          </div>
+                        </div>
+                      </div>
+
+                    
+
+                </div>
+
+                <div *ngIf="showWorkoutEntries">
+                      
+                    <hr mat-line class="line">
+                     
+                     <mat-label class="title">Workouts</mat-label>
+
+                   <div class="empty"></div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-2">
+                            <button class="progress-button" disabled></button>
+
+                        </div>
+                        <div class="col-5">
+                        <mat-label>Complete 5 workouts</mat-label>
+                        <div class="progress-container">
+                            <div class="progress-bar" [style.width.%]="calculateProgress(workoutAmount, 5)"></div>
+                        </div>
+                        <mat-label>{{ workoutAmount > 5 ? 5 : workoutAmount }}/5</mat-label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-2">
+                            <button class="progress-button" disabled></button>
+
+                        </div>
+                        <div class="col-5">
+                        <mat-label>Complete 10 workouts</mat-label>
+                        <div class="progress-container">
+                            <div class="progress-bar" [style.width.%]="calculateProgress(workoutAmount, 10)"></div>
+                        </div>
+                        <mat-label>{{ workoutAmount > 10 ? 10 : workoutAmount }}/10</mat-label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-2">
+
+                        <button class="progress-button" disabled></button>
+
+                        </div>
+                        <div class="col-5">
+                        <mat-label>Complete 15 workouts</mat-label>
+                        <div class="progress-container">
+                            <div class="progress-bar" [style.width.%]="calculateProgress(workoutAmount, 15)"></div>
+                        </div>
+                        <mat-label>{{ workoutAmount > 15 ? 15 : workoutAmount }}/15</mat-label>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    
+
+                    <div *ngIf="showMentalHealth">
+
+                        <hr mat-line class="line">
+
+                    <mat-label class="title">Mental Health</mat-label>
+
+                    <div class="empty"></div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <button class="progress-button" disabled></button>
+    
+                            </div>
+                            <div class="col-5">
+                            <mat-label>Complete 5 mental health recordings</mat-label>
+                            <div class="progress-container">
+                                <div class="progress-bar" [style.width.%]="calculateMentalProgress(mentalAmount, 5)"></div>
+                            </div>
+                            <mat-label>{{ mentalAmount > 5 ? 5 : mentalAmount }}/5</mat-label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-2">
+                                <button class="progress-button" disabled></button>
+    
+                            </div>
+                            <div class="col-5">
+                            <mat-label>Complete 10 mental health recordings</mat-label>
+                            <div class="progress-container">
+                                <div class="progress-bar" [style.width.%]="calculateMentalProgress(mentalAmount, 10)"></div>
+                            </div>
+                            <mat-label>{{ mentalAmount > 10 ? 10 : mentalAmount }}/10</mat-label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-2">
+    
+                            <button class="progress-button" disabled></button>
+    
+                            </div>
+                            <div class="col-5">
+                            <mat-label>Complete 15 mental health recordings</mat-label>
+                            <div class="progress-container">
+                                <div class="progress-bar" [style.width.%]="calculateMentalProgress(mentalAmount, 15)"></div>
+                            </div>
+                            <mat-label>{{ mentalAmount > 15 ? 15 : mentalAmount }}/15</mat-label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+  
+                      
+
+                    
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card>
+                <mat-card-header class="header">
+                    <mat-card-title>Account Termination</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="terminateAccountForm" (ngSubmit)="onSubmit()">
+                        <h2 class="row w-100 p-5 m-0">
+                            I understand that by pressing “send” I am permanently terminating and deleting my account
+                            from
+                            fitn3ss and I will permanently lose all data associated with it.
+                        </h2>
+
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Confirm password:</mat-label>
+                            <input matInput type="password" placeholder="Confirm password"
+                                formControlName="terminatePassword">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Reason:</mat-label>
+                            <textarea matInput type="text" placeholder="Please state your reason..."
+                                formControlName="terminateReason"></textarea>
+                        </mat-form-field>
+
+                        <div class="tool-tip w-100" matTooltip="Please fill out all required fields"
+                            [matTooltipDisabled]="terminateAccountForm.valid">
+                            <button mat-flat-button color="warn" class="submit-button w-100" type="submit"
+                                [disabled]="!terminateAccountForm.valid">Submit</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

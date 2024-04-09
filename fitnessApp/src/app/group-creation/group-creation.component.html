@@ -1,0 +1,45 @@
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card class="foodEntry align-items-center">
+                <mat-card-header class="header">
+                    <mat-card-title>Create Group</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="groupCreateContent">
+
+                    <form [formGroup]="groupCreation" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Group Name</mat-label>
+                            <input formControlName="groupName" matInput>
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Goals</mat-label>
+                            <input formControlName="goals" matInput>
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill" class="description">
+                            <mat-label>Description</mat-label>
+                            <input formControlName="description" matInput>
+                        </mat-form-field>
+                        <br>
+
+                        <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+                        <div class="tool-tip" matTooltip="Please fill out all required fields"
+                            [matTooltipDisabled]="groupCreation.valid">
+                            <div class="empty"></div>
+                            <button mat-flat-button class="submit-button w-100" color="primary" type="submit"
+                                [disabled]="!groupCreation.valid">Create</button>
+                        </div>
+                        <br>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

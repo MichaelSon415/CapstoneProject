@@ -1,0 +1,72 @@
+.terrible-button {
+    background-image: url('temp_terrible.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 150px; 
+    height: 150px; 
+    padding: 15px;
+
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .bad-button {
+    background-image: url('temp_bad.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 150px; 
+    height: 150px;
+    padding: 15px;
+
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .average-button {
+    background-image: url('temp_neutral.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 150px; 
+    height: 150px; 
+    padding: 15px;
+
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .good-button {
+    background-image: url('temp_good.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 150px; 
+    height: 150px; 
+    padding: 15px;
+
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .excellent-button {
+    background-image: url('temp_excellent.png');
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 150px; 
+    height: 150px; 
+    padding: 15px;
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+
+  .title{
+    font-weight: 500;
+    font-size: 20px;
+
+  }
+
+  button[type="emotion"]:hover{
+    height:250px;
+    width:250px;
+  }

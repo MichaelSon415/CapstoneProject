@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    /*Need to alight items in the center of the screen according to figma*/
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.green-background {
+    background-color: #D0E8D7;
+    position: center; /* Use *something* positioning */
+    /*We'll use percentages so that the green box will be in the 
+    perfect spot no matter the screen size*/
+    top: 10%; /* move box down */
+    left: 10%; /* Move the box to the right*/
+    height: 90%;
+    width: 90%;
+    padding: 0; /* Add padding for spacing */
+    border-radius: 20px; /* Rounded corners */
+    /*nav-down: 5px;*/
+}
+
+.green-top{
+    background: #4DFFB2;
+    position: center;
+    width: 100%;
+    height: 10%;
+    border-radius: 20px 20px 0px 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+.entry-details{
+    padding: 1%;
+}
+
+
+.text{
+    font-weight: 500;
+    padding-top: 1%;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 46px;
+    
+    text-align: center;
+}
+
+.submit-button{
+    background-color: #006C46; /*//background color of submit buttont purple*/
+      color: white; /*font to white*/
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 50%;
+      height: 2%;
+      margin-top: 10%;
+      margin-left: 22%;
+}
+
+.submit-button:hover{
+    background-color: #e2314f; /* When user hovers over change color */
+    
+}
+
+
+
+
+
+
+
+

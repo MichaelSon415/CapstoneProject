@@ -1,0 +1,17 @@
+.groupprofile {
+    margin-bottom: 5px;
+    background-color: transparent;
+    padding: 1px;
+    border-color: #04AA6D;
+}
+
+.groupInvite {
+    background-color: var(--tertiary---tertiary--container);
+    border-radius: 25px;
+}
+
+.createGroup {
+    background-color: #006C46;
+    border-radius: 25px;
+    padding: 10px;
+}

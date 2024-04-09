@@ -1,0 +1,335 @@
+import { Component, ViewChild, ElementRef, ViewContainerRef, ComponentRef, AfterViewInit, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserHomepageComponent } from '../user-homepage/user-homepage.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { InDephWorkoutMainComponent } from '../in-deph-workout-main/in-deph-workout-main.component';
+import { WorkoutentryComponent } from '../workoutentry/workoutentry.component';
+import { FoodentryComponent } from '../foodentry/foodentry.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
+import { WorkoutEntryComponent } from '../workout-entry/workout-entry.component';
+import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+
+interface MenuItem {
+  id: string,
+  label: string,
+  icon?: string,
+  description?: string;
+  component?: any;
+  parent_id?: string;
+  default_child?: string;
+}
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit, AfterViewInit {
+  constructor(private viewContainerRef: ViewContainerRef, private el: ElementRef, private router: Router) {
+    this.dynamicComponentContainer = this.viewContainerRef;
+  }
+
+  screenWidth!: number;
+  prevScreenWidth: number = 0;
+  selectedComponent: ComponentRef<any> | null = null;
+  selectedInnerItem = "";
+  currentComponentTitle: string = "Homepage";
+  previousItemId: any = UserHomepageComponent;
+  itemIdHistory: string[] = [];
+  goingBack: boolean = false;
+  activeTabIndex: number = 0;
+  addItemHistory: boolean = false;
+  // Load element container for dynamic components loading
+  @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
+  @ViewChild('dynamicComponentContainer2', { read: ViewContainerRef }) dynamicComponentContainer2!: ViewContainerRef;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.prevScreenWidth = this.screenWidth;
+    this.screenWidth = window.innerWidth;
+    if ((this.screenWidth >= 545 && this.prevScreenWidth < 545) || (this.screenWidth < 545 && this.prevScreenWidth >= 545)) {
+      // this.moveComponentToContainer(this.dynamicComponentContainer);
+      console.log("Changing inner item from onResize");
+      this.selectInnerItem(this.selectedInnerItem);
+    }
+  }
+
+  // Load default component after init
+  // Last Visited Page feature will be implemented in the future
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    const storedInnerItem = localStorage.getItem('selectedInnerItem');
+    const storedOuterItem = localStorage.getItem('selectedOuterItem');
+    if (storedInnerItem && storedInnerItem !== '404') {
+      this.selectedInnerItem = storedInnerItem;
+    } else {
+      this.selectedInnerItem = 'homepage';
+    }
+    if (storedOuterItem && storedInnerItem !== '404') {
+      this.selectedOuterItem = storedOuterItem;
+    } else {
+      this.selectedOuterItem = 'home';
+    }
+    console.log("Loaded outer: " + this.selectedOuterItem);
+    console.log("Loaded inner: " + this.selectedInnerItem);
+  }
+
+  // Load home page after view
+  ngAfterViewInit() {
+    console.log("Changing inner item from ViewInit");
+    this.selectInnerItem(this.selectedInnerItem);
+  }
+
+  goBack() {
+    if (this.itemIdHistory.length > 1) {
+      this.itemIdHistory.pop();
+      const previousItemId = this.itemIdHistory[this.itemIdHistory.length - 1];
+      this.goingBack = true;
+      console.log("Changing inner item from goBack()");
+      this.selectInnerItem(previousItemId);
+    }
+    console.log(this.activeTabIndex);
+    console.log("goBack()" + this.itemIdHistory);
+  }
+
+  // Selector of outer navigation bar item
+  selectedOuterItem: string = 'home';
+  selectOuterItem(item: string) {
+    if (item === 'exit') {
+      this.router.navigate(['/logout']);
+    } else {
+      this.selectedOuterItem = item;
+    }
+  }
+
+  getInnerItemsByOuterItem(selectedOuterItem: string): MenuItem[] {
+    return this.innerNavItems.filter((item) => item.parent_id === selectedOuterItem);
+  }
+
+  selectInnerItem(itemId: string) {
+    console.log("Changing inner to " + itemId);
+    this.selectedInnerItem = itemId;
+    localStorage.setItem('selectedInnerItem', this.selectedInnerItem);
+    localStorage.setItem('selectedOuterItem', this.selectedOuterItem);
+
+    const selectedItem = this.innerNavItems.find(item => item.id === itemId);
+    if (selectedItem) {
+      const newIndex = this.getBottomNavItems().findIndex(outerItem => outerItem.id === selectedItem.parent_id);
+      this.activeTabIndex = newIndex;
+    }
+    const title = selectedItem ? selectedItem.label : "Homepage";
+    this.currentComponentTitle = title;
+
+    this.loadSelectedComponent(this.getComponentByItemId(this.selectedInnerItem));
+    console.log("Going back?" + this.goingBack);
+    if (!this.goingBack) {
+      this.itemIdHistory.push(itemId);
+    } else {
+      this.goingBack = false;
+    }
+    console.log("Current history " + this.itemIdHistory);
+  }
+
+  loadSelectedComponent(componentToLoad: any) {
+    this.clearComponent();
+    const factory = this.viewContainerRef.createComponent(componentToLoad);
+    this.selectedComponent = factory;
+    this.dynamicComponentContainer.insert(this.selectedComponent.hostView);
+  }
+
+  getComponentByItemId(itemId: string): any {
+    const selectedItem = this.innerNavItems.find(item => item.id === itemId);
+    return selectedItem?.component ? selectedItem.component : NotFoundComponent;
+  }
+
+  moveComponentToContainer(targetContainer: ViewContainerRef) {
+    if (this.selectedComponent && targetContainer) {
+      // Remove content from the current container
+      this.selectedComponent.destroy();
+      // Create a new factory and load the component into the specified container
+      const factory = this.viewContainerRef.createComponent(this.getComponentByItemId(this.selectedInnerItem));
+      this.selectedComponent = factory;
+      targetContainer.insert(this.selectedComponent.hostView);
+    }
+  }
+
+  onTabChange(event: MatTabChangeEvent): void {
+    const selectedTabIndex = event.index;
+    const selectedItem = this.getBottomNavItems()[selectedTabIndex];
+    const lastItemid = this.itemIdHistory[this.itemIdHistory.length - 1];
+    console.log("Changing inner item from onTabChange");
+    if (selectedItem.default_child) {
+      if (selectedItem.default_child !== lastItemid) {
+        this.selectInnerItem(selectedItem.default_child);
+        this.selectOuterItem(selectedItem.id);
+      }
+    } else {
+      console.log("No default child")
+    }
+  }
+
+  getBottomNavItems(): MenuItem[] {
+    const allowedIds = ['home', 'workout', 'nutrition', 'social', 'chat'];
+    return this.outerNavItems.filter(item => allowedIds.includes(item.id));
+  }
+
+  clearComponent() {
+    if (this.selectedComponent) {
+      this.selectedComponent.destroy();
+      this.selectedComponent = null;
+    }
+  }
+
+  // List of outer navigation bar items
+  outerNavItems: MenuItem[] = [
+    { id: 'home', icon: 'home', label: 'Home', component: UserHomepageComponent, default_child: 'homepage' },
+    { id: 'setting', icon: 'settings', label: 'Setting', default_child: '404' },
+    { id: 'workout', icon: 'directions_run', label: 'Workouts', component: InDephWorkoutMainComponent, default_child: 'workout_info' },
+    { id: 'nutrition', icon: 'local_dining', label: 'Nutrition', default_child: '404' },
+    { id: 'social', icon: 'people', label: 'Social', default_child: '404' },
+    { id: 'chat', icon: 'chat_bubble_outline', label: 'Chat', default_child: '404' },
+    { id: 'exit', icon: 'exit_to_app', label: "Sign out", default_child: '404' },
+  ]
+
+  innerNavItems: MenuItem[] = [
+    {
+      parent_id: 'home',
+      id: 'homepage',
+      label: 'Home',
+      description: 'Homepage',
+      component: UserHomepageComponent
+    },
+    {
+      parent_id: 'home',
+      id: 'achieve',
+      label: 'Achievements',
+      description: 'View your achievements',
+    },
+    {
+      parent_id: 'setting',
+      id: 'account',
+      label: 'Account',
+      description: 'Change name, edit profile picture, view block list, set status, terminate account',
+    },
+    {
+      parent_id: 'setting',
+      id: 'calfit',
+      label: 'Calorie/Fitness Settings',
+      description: 'Change units, toogle information, edit fitness goals'
+    },
+    {
+      parent_id: 'setting',
+      id: 'sound',
+      label: 'Sound and Notifications',
+      description: 'Change volume levels, toggle notifications'
+    },
+    {
+      parent_id: 'setting',
+      id: 'change_password',
+      label: 'Change Password',
+      description: 'Change user password',
+      component: ChangePasswordComponent
+    },
+    {
+      parent_id: 'setting',
+      id: 'font',
+      label: 'Font Size',
+      description: 'Change display font size',
+    },
+    {
+      parent_id: 'setting',
+      id: 'faq',
+      label: 'FAQ',
+      description: 'Frequently asked questions',
+    },
+    {
+      parent_id: 'setting',
+      id: 'contact',
+      label: 'Contact Us',
+      description: 'Feel free to contact us for any questions or feedbacks',
+      component: ContactUsComponent
+    },
+    {
+      parent_id: 'workout',
+      id: 'workout_info',
+      label: 'Workout Information',
+      description: 'Workout details',
+      component: InDephWorkoutMainComponent
+    },
+    {
+      parent_id: 'workout',
+      id: 'goal',
+      label: 'Fitness Goals',
+      description: 'Enter fitness goals',
+    },
+    {
+      parent_id: 'workout',
+      id: 'workout_entry',
+      label: 'Workout Entry',
+      description: 'Enter workout',
+      component: WorkoutEntryComponent
+    },
+    {
+      parent_id: 'nutrition',
+      id: 'calorie_info',
+      label: 'Calorie Information',
+      description: 'Calorie info',
+    },
+    {
+      parent_id: 'nutrition',
+      id: 'food_entry',
+      label: 'Food Entry',
+      description: 'Enter food eaten',
+      component: FoodentryComponent
+    },
+    {
+      parent_id: 'social',
+      id: 'social',
+      label: 'Social',
+      description: 'View your social page',
+    },
+    {
+      parent_id: 'social',
+      id: 'friend_finder',
+      label: 'Friends Finder',
+      description: 'Find friends',
+    },
+    {
+      parent_id: 'social',
+      id: 'group_finder',
+      label: 'Group Finder',
+      description: 'Find groups',
+    },
+    {
+      parent_id: 'social',
+      id: 'profile_page',
+      label: 'Profile Page',
+      description: 'View other profiles',
+    },
+    {
+      parent_id: 'social',
+      id: 'group_page',
+      label: 'Group Page',
+      description: 'View other groups',
+    },
+    {
+      parent_id: 'social',
+      id: 'group_setting',
+      label: 'Group Setting',
+      description: 'Group settings',
+    },
+    {
+      parent_id: 'chat',
+      id: 'message',
+      label: 'Chat',
+      description: 'Chat messages',
+    },
+    {
+      parent_id: 'chat',
+      id: 'chat_list',
+      label: 'Chat List',
+      description: 'List of all chats',
+    },
+  ]
+}

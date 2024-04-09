@@ -1,0 +1,61 @@
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card class="foodEntry align-items-center">
+                <mat-card-header class="header">
+                    <mat-card-title>{{ editingCalorieHistory ? 'Food Edit' : 'Food Entry' }}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="foodContent">
+
+                    <form [formGroup]="foodEntryForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Food Name</mat-label>
+                            <input formControlName="foodName" matInput>
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Calories</mat-label>
+                            <input formControlName="calories" matInput type="number">
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Carbohydrates (g)</mat-label>
+                            <input formControlName="carbs" matInput type="number">
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fat (g)</mat-label>
+                            <input formControlName="fats" matInput type="number">
+                        </mat-form-field>
+                        <br>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Proteins (g)</mat-label>
+                            <input formControlName="proteins" matInput type="number">
+                        </mat-form-field>
+                        <br>
+
+
+
+                        <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+                        <div class="tool-tip" matTooltip="Please fill out all required fields"
+                            [matTooltipDisabled]="foodEntryForm.valid">
+                            <button mat-flat-button color="primary" class="submit-button w-100" type="submit"
+                                [disabled]="!foodEntryForm.valid">{{ editingCalorieHistory ? 'Edit' : 'Submit'
+                                }}</button>
+                        </div>
+                        <button mat-flat-button color="primary" class="w-100 mt-3"
+                            (click)="goToAnotherPage('calorieinformation')">Back to Calorie
+                            Info</button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

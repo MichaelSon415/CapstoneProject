@@ -1,0 +1,42 @@
+<!-- <div class="green-background">
+    <div class="green-top">
+        <label class="title">Log Out</label>
+    </div>
+
+    <label class="question">
+        Are you sure you want to log out?
+    </label>
+    <p></p>
+
+    <button (click)="goToAnotherPage('LOGOUTUSER')" class="positive"></button>
+    <button (click)="goToAnotherPage('homepage')" class="negative"></button>
+</div> -->
+
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg">
+            <mat-card>
+                <mat-card-header class="header">
+                    <mat-card-title>Sign Out</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row text-center">
+                        <h2>Do you want to sign out your account?</h2>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="col">
+                            <button mat-flat-button (click)="loggingOut(true)" color="warn" class="w-100 p-4">
+                                Yes, sign me out
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button mat-flat-button (click)="loggingOut(false)" color="primary" class="w-100 p-4">
+                                No, bring me back
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

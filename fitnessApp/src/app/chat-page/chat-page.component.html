@@ -1,0 +1,153 @@
+<div class="d-none">
+  <mat-drawer-container class="example-container" autosize>
+    <!--  <mat-drawer #drawer class="example-sidenav" mode="side" >
+          Chat Sidebar
+         <mat-nav-list>
+           <h3><mat-icon>group</mat-icon> Current Chats </h3>
+           <mat-list class="user-list">
+             <button mat-button *ngFor="let channel of conversations" [value]="channel.name" (click)="getMessages(channel)">{{ channel.name }}</button>
+           </mat-list>
+           <div>
+             {{ listConversationsResult }}
+           </div>
+           
+         </mat-nav-list>
+       </mat-drawer>
+     
+       <div class="example-sidenav-content">
+         <div class="show-friends-button">
+         <button mat-raised-button class="show-friends" type="button" mat-button (click)="drawer.toggle()">
+           Show Actual Chats
+         </button>
+       </div>
+      -->
+    <mat-form-field>
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let channel of conversations" [value]="channel.name" (click)="getMessages(channel)">{{
+          channel.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Chat Header -->
+    <mat-toolbar color="primary" class="chat-header">
+      <span class="user-namee"><mat-icon class="icon-header">fitness_center</mat-icon>{{ selectedChannelName ||
+        'Fitn3ss App' }}  </span>
+      <button mat-icon-button></button>
+    </mat-toolbar>
+    <!-- Chat Main Content -->
+
+    <div class="chat-messages" #messageList >
+      <div class="message" *ngFor="let message of messages" >
+        <p class="user-name">{{ selectedChannelName }}: </p>
+        <div class="message-text">
+          <p class="text">{{ message.message }}</p>
+          <p class="timestamp">{{ formatTimestamp(message.createdAt) }}</p> 
+        </div>
+      </div>
+    </div>
+
+
+    <div class="input-container">
+      <button mat-icon-button class="attach-button"><mat-icon>add</mat-icon></button>
+      <mat-form-field class="message-input">
+        <input matInput #messageInput class="rounded" id="msg" type="text" placeholder="Enter Message" required
+          autocomplete="off" (input)="updateTextMessage($event)" />
+      </mat-form-field>
+      <button mat-icon-button class="send-button" (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+    </div>
+  </mat-drawer-container>
+</div>
+
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10 h-90">
+      <mat-card class="h-100">
+        <mat-card-header class="header">
+
+          <mat-card-title>
+
+          <span class="menuUser">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              #menuTrigger="matMenuTrigger"
+              (mouseover)="menuTrigger.openMenu()"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" class = "custom" [overlapTrigger]="false">
+              <span (mouseleave)="menuTrigger.closeMenu()">
+                <button class = "topUserOption" (click)="profilePage()" mat-menu-item>
+                  <mat-icon>home</mat-icon>
+                  <span >userInfo</span>
+                </button>
+                <button  mat-menu-item (click)="openBottomSheet()" >
+                  <mat-icon>volume_off</mat-icon>
+                  <span>Mute</span>
+                </button>
+                <button (click)="settingPage()" mat-menu-item>
+                  <mat-icon>settings</mat-icon>
+                  <span>Settings</span>
+                </button>
+                <button class = "bottomUserOption" (click)="reportChat()" mat-menu-item>
+                  <mat-icon>report</mat-icon>
+                  <span >Report</span>
+                </button>
+              </span>
+            </mat-menu>
+          </span>
+
+          
+          <span class="fill-remaining-space">{{selectedChannelName || "Fitness Chat"}}</span>
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content class="bg-white h-100 overflow-auto py-0" #scroll>
+          <div  class="message my-3" *ngFor="let message of messages" #item>
+            <p class="user-name" (click)="chatUser(message.sender?.userId || '', message.sender?.nickname || '')">{{ message.sender?.nickname }}: </p>
+            <div class="message-text d-flex">
+              <p class="text m-0 p-3">{{ message.message }}</p>
+              <p class="timestamp m-0 p-3 align-self-end">{{ formatTimestamp(message.createdAt) }}</p>
+            </div>
+          </div>
+
+          <!-- <div class="mesage my-3" *ngFor="let e of [].constructor(5); let i = index">
+            <p class="user-name">Kenry: </p>
+            <div class="message-text d-flex">
+              <p class="text m-0 p-3">Temporary text {{i+1}}</p>
+              <p class="timestamp m-0 p-3 align-self-end">Today</p>
+            </div>
+          </div>
+
+          <div class="mesage my-3">
+            <p class="user-name">Kenry: </p>
+            <div class="message-text d-flex">
+              <p class="text m-0 p-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p class="timestamp m-0 p-3 align-self-end">Today</p>
+            </div>
+          </div> -->
+
+        </mat-card-content>
+        <mat-card-footer class="row">
+          <mat-form-field class="message-input col" appearance="outline">
+            <button mat-icon-button matPrefix class="attach-button m-0"><mat-icon>add</mat-icon></button>
+            <input matInput #messageInput [(ngModel)]="messageText" class="" id="msg" type="text"
+              placeholder="Enter Message" required autocomplete="off" (input)="updateTextMessage($event)" (keydown.enter)="sendMessage()"/>
+            <button mat-icon-button matSuffix *ngIf="messageText" class="send-button m-0"
+              (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+          </mat-form-field>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

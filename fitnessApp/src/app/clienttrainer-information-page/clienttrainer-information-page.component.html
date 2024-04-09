@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="green-background">
+        <p></p>
+
+
+
+        <button mat-raised-button routerLink="" class="tempuserbutton" disabled></button>
+        <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mat-label>
+        <!-- <img class = "temp_user_image" src="temp_user_image.png"><img> -->
+
+        <mat-label>{{userName}}</mat-label>
+
+        <!-- <p class = "line">------------------------------------------------------------------------------------------------------------------------------------------------------------</p> -->
+        <!-- <p>Client Name</p> -->
+        <hr mat-line class="line">
+        <!-- <mat-label class = "client-details">Details</mat-label> -->
+
+
+
+        <p></p>
+        <!-- <div class = "tool-tip" matTooltip="Please fill out all required fields"> -->
+
+        <div *ngIf="showMentalHealth">
+            <button mat-icon-button (click)="openDialog()" class="mentalwellnesspopupbutton" type="send-button">How
+                are you feeling?</button>
+
+        </div>
+        <!-- </div> -->
+        <p></p>
+
+        <mat-label class="title-label">Primary Goal</mat-label>
+        <div *ngFor="let goal of goals">
+            <mat-label class="label">{{goal}}</mat-label>
+        </div>
+
+
+        <div *ngIf="showGraphToggle===true || showGraphToggle===null">
+            <div class="row">
+                <div class="col-sm">
+                    <h1>Workout Information</h1>
+                    <!-- <img src="../../assets/workout-progress-filler.png" alt="Workout-Progress-filler" class="img-filler"> -->
+                    <div class="chart-container">
+                        <canvas id="workoutChart">{{ chart }}</canvas>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <h1>Calorie Information</h1>
+                    <!-- <img src="../../assets/calorie-tracker-filler.png" alt="Calorie-Tracker-filler" class="img-filler"> -->
+                    <div class="chart-container">
+                        <canvas id="CalorieChart">{{ chart }}</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+
+    <div class="col-lg-10">
+      <mat-card class="settingsFitnessCalorieContentCard">
+
+
+        <mat-card-header class="header">
+          <mat-card-title>Fitness/Calorie Settings</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content class="settingsFitnessCalorieContent">
+
+
+          <div class="container-fluid h-100">
+            <div class="row align-items-end h-100">
+              <div class="col-16 h-100">
+
+                <div class="d-flex justify-content-center align-items-center">
+                  <mat-card-title class="mini-title mb-3">Calorie Intake</mat-card-title>
+                </div>
+                <form [formGroup]="calorieIntakeSettingForm" (ngSubmit)="submitCalorieIntakeSettingForm()">
+                  <!-- Switch kCal ↔ kJ -->
+                  <div class="row h-100 my-5">
+                    <mat-label class="col fs-6">Show Mental Health Items</mat-label>
+                    <mat-slide-toggle color="primary" formControlName="kCalToggle"
+                      class="toggle col-2"></mat-slide-toggle>
+                  </div>
+
+                  <!-- Show Steps -->
+                  <div class="row h-100 my-5">
+                    <mat-label class="col fs-6">Show Workout Entry Items </mat-label>
+                    <mat-slide-toggle color="primary" formControlName="showStepsToggle"
+                      class="toggle col-2"></mat-slide-toggle>
+                  </div>
+
+                  <!-- Show Graph -->
+                  <div class="row h-100 my-5">
+                    <mat-label class="col fs-6">Show Graph</mat-label>
+                    <mat-slide-toggle color="primary" formControlName="showGraphToggle"
+                      class="toggle col-2"></mat-slide-toggle>
+                  </div>
+
+                  <!-- Show Nutritional Recommendations -->
+                  <div class="row h-100 my-5">
+                    <mat-label class="col fs-6">Show Workout Recommendations</mat-label>
+                    <mat-slide-toggle color="primary" formControlName="nutritionalRecommendationsToggle"
+                      class="toggle col-2"></mat-slide-toggle>
+                  </div>
+
+                  
+
+                  <button mat-flat-button color="primary" class="row w-100 submit-button" type="submit">
+                    Update
+                  </button>
+                </form>
+              </div>
+
+
+              
+            </div>
+          </div>
+
+
+
+
+          <!-- <hr mat-line class = "line"> -->
+
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

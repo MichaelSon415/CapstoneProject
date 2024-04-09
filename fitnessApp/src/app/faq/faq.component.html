@@ -1,0 +1,139 @@
+<!-- <button routerLink="">Component Paths</button>
+<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head> -->
+
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <mat-card class="faqContentCard align-items-center">
+
+
+        <mat-card-header class="header">
+          <mat-card-title>FAQ</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content class="faqContent">
+
+
+          <div class="container-fluid h-100">
+            <div class="row justify-content-center align-items-start h-100">
+              <div class="col-auto">
+              </div>
+            </div>
+          </div>
+
+
+          <mat-accordion multi="false">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How do I change my password?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to change your password please visit our change password page.
+              <a (click)="goToAnotherPage('changepassword')">Change Password Here</a>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How do I terminate my account?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to terminate your account please visit our account termination page.
+              <a (click)="goToAnotherPage('accounttermination')">Terminate Account Here</a>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How do I report a user being inappropriate?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If a user is breaking our guidelines please report them on our 'report' page
+              <a (click)="goToAnotherPage('reportpage')">Report User Here</a>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How do I navigate through the app?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              To navigate to different pages please use the navigation bar to the left of your screen.
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Contacting Us
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to contact our support team please visit our 'contact us' page.
+              <a (click)="goToAnotherPage('contactus')">Contact Us Here</a>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  How do I change my fitness goals?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to update your fitness goals please visit our settings page.
+              <a (click)="goToAnotherPage('personalfitnessgoals')">Change Settings Here</a>
+
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Where do I view my workout information?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to view your workout information please visit
+              <a (click)="goToAnotherPage('workout_info')">Workout Information</a>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Where do I submit a workout entry?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to submit a workout entry please visit
+              <a (click)="goToAnotherPage('workoutentry')">Workout Entries</a>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Where is my Social Page?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              If you would like to visit Social Page please go to
+              <a (click)="goToAnotherPage('socialpage')">Social Page</a>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- </html> -->

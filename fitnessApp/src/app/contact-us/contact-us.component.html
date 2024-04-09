@@ -1,0 +1,42 @@
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card class="contactUs align-items-center">
+                <mat-card-header class="header">
+                    <mat-card-title>Contact Us</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="contactUsContent">
+
+                    <form [formGroup]="contactForm" class="contact-form" (ngSubmit)="sendEmail(emailForm)" #emailForm>
+
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input formControlName="name" name="user_name" matInput>
+                        </mat-form-field>
+                    
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email (e.g. fitness@gmail.com)</mat-label>
+                            <input formControlName="email" name="user_email" matInput type="email">
+                        </mat-form-field>
+                    
+                        <mat-form-field appearance="fill" class="message">
+                            <mat-label>Message</mat-label>
+                            <textarea formControlName="message" name="message" matInput></textarea>
+                        </mat-form-field>
+
+                        <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+                        <div class="tool-tip" matTooltip=" Please fill out all required fields"
+                        [matTooltipDisabled]="contactForm.valid">
+                        <button mat-flat-button color="primary" class="submit-button w-100" type="submit"
+                            [disabled]="!contactForm.valid">Submit</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+

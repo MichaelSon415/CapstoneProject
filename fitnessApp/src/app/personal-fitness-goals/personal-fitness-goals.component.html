@@ -1,0 +1,80 @@
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <mat-card>
+        <mat-card-header class="header">
+          <mat-card-title>Fitness Goal</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="goalForm" (ngSubmit)="onSubmit()" class="entry-details">
+
+
+            <!--mat form field, mat label, mat select/drop-down with mat-options -->
+            <mat-form-field appearance="fill" class="matFormFieldDropDown">
+              <mat-label class="question">What is your primary goal?</mat-label>
+              <mat-select class="dropDown" id="goal" formControlName="goal" required>
+                <mat-option disabled value="" selected>Select an option</mat-option>
+                <mat-option *ngFor="let option of workoutOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--mat form field, mat label, mat select/drop-down with mat-options -->
+            <mat-form-field appearance="fill" class="matFormFieldDropDown">
+              <mat-label class="question">Level of Activity (Days Per Week)</mat-label>
+              <mat-select class="dropDown" id="activityLevel" formControlName="activityLevel" required>
+                <mat-option disabled value="" selected>Select an option</mat-option>
+                <mat-option *ngFor="let option of activityLevels" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--mat form field, mat label, mat select/drop-down with mat-options -->
+            <mat-form-field appearance="fill" class="matFormFieldDropDown">
+              <mat-label class="question">Any Disabilities?</mat-label>
+              <mat-select class="dropDown" id="disabilities" formControlName="disabilities" required>
+                <mat-option disabled value="" selected>Select an option</mat-option>
+                <mat-option *ngFor="let option of disabilities" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--If form value equals to yes then pop up an input box for user to enter text-->
+            <!-- <div *ngIf="goalForm.get('disabilities')?.value === 'Yes'">
+              <mat-form-field appearance="fill" class="matFormFieldDropDown">
+                <mat-label>Please provide your disabilities (use comma to separate different disabilities):</mat-label>
+                <input matInput id="disabilityList" formControlName="disabilityList" type="text" required>
+              </mat-form-field>
+            </div> -->
+
+            <!--mat form field, mat label, mat select/drop-down with mat-options -->
+            <mat-form-field appearance="fill" class="matFormFieldDropDown">
+              <mat-label class="question">Allergies to food?</mat-label>
+              <mat-select class="dropDown" id="allergies" formControlName="allergies" required>
+                <mat-option disabled value="" selected>Select an option</mat-option>
+                <mat-option *ngFor="let option of yesNo" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--If form value equals to yes then pop up an input box for user to enter text-->
+            <div *ngIf="goalForm.get('allergies')?.value === 'Yes'">
+              <mat-form-field appearance="fill" class="matFormFieldDropDown">
+                <mat-label>Please provide your allergies (use comma to separate different allergies):</mat-label>
+                <input matInput id="allergyList" formControlName="allergyList" type="text" required>
+              </mat-form-field>
+            </div>
+
+            <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+            <div class="tool-tip" matTooltip="Please fill out all required fields"
+              [matTooltipDisabled]="goalForm.valid">
+              <div class="empty"></div>
+              <button mat-flat-button class="submit-button w-100" type="submit" color="primary"
+                [disabled]="!goalForm.valid">Update</button>
+            </div>
+            <button mat-flat-button color="primary" class="w-100 mt-3" (click)="goToAnotherPage('workout_info')">Back to
+              Workout
+              Info</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

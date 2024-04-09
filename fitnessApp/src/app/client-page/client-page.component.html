@@ -1,0 +1,84 @@
+<button routerLink="">Component Paths</button>
+
+<style>
+    .profile {
+      display: flex;
+      padding-left: 50px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      justify-content: center
+    }
+    img {
+      width: 170px;
+    }
+    .image {
+      height: 150px;
+    }
+    .text {
+        font-size: 30px;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+</style>
+<style>
+    .details {
+      display: flex;
+      padding-top: 10px;
+      padding-left: 50px;
+    }
+    img {
+      width: 170px;
+    }
+    .image {
+      height: 150px;
+    }
+    .text {
+        font-size: 30px;
+        padding-top: 15px;
+        padding-left: 20px;
+    }
+</style>
+
+<style type="text/css">
+    h1  {
+        padding-top: 10px;
+        font-size: 30px;
+    }
+
+    h2 {
+        padding-top: 40px;
+        padding-left: 10px;
+        font-size: 40px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+</style>
+
+<body>
+    <mat-grid-list cols="1" rowHeight="32.6%" gutterSize="5px">
+    
+    <div class="profile">
+        <div class="image">
+          <img src="/assets/profileImage.png" width="170" height="150">
+        </div>
+        <h2>Client Name</h2>
+    </div>
+
+    <hr>
+
+    <div class="details">
+      <h1>Client Details</h1>
+    </div>
+    <div class="details">
+      <!--Need to create links after pages are ready //popup-->
+      <p>Mental Health Tracker</p>
+    </div>
+
+    <!--Will eventually be a button to take you to another detailed page-->
+    <img style="float: left; padding: 10px 0px 10px 50px;" src="/assets/workoutProgress.png"
+     width="100%">
+
+    </mat-grid-list>
+</body>

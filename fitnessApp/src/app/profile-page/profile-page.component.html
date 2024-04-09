@@ -1,0 +1,81 @@
+<!-- <button routerLink="">Component Paths</button>
+<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head> -->
+
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <mat-card class="socialPageContentCard align-items-center">
+
+
+        <mat-card-header class="header">
+          <mat-card-title>Profile Page</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content class="socialPageContent">
+
+
+          <div class="container-fluid h-100">
+
+            
+
+            <div class="row justify-content-center align-items-start h-100">
+              <div class="col-auto">
+                <button mat-flat-button routerLink="" class="tempuserbutton" disabled></button>
+                <div class="text-center">
+                  <mat-label>{{userName}}</mat-label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <hr mat-line class="line">
+
+
+          <mat-label class="title-label">Primary Goal</mat-label>
+          <div *ngFor="let goal of goals">
+            <mat-label class="label">{{goal}}</mat-label>
+          </div>
+
+
+
+          <hr mat-line class="line">
+
+          <mat-label class="title-label">Friends</mat-label>
+          <div class="col-lg-6 p-3 h-100">
+            <div class="py-2 cur-pointer overflow-auto" *ngFor="let user of usersArray | slice:0:2">
+                <img class="mr-3" src="temp_user_image.png">
+                <mat-label>{{ user.username }}</mat-label>
+            </div>
+        </div>
+        
+
+
+          <hr mat-line class="line">
+
+
+          <mat-label class="title-label">Groups</mat-label>
+          <div *ngFor="let group of groups">
+            <img class="mr-3" src="temp_user_image.png">
+            <mat-label class="label">{{group}}</mat-label>
+          </div>
+
+
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- </html> -->

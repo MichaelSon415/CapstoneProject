@@ -1,0 +1,47 @@
+
+<div *ngIf="loadingService.loading$ | async" class="loading-overlay">
+  <div class="spinner"></div>
+  <mat-label class="welcome-message fixed-top text-center">Welcome Back!</mat-label>
+
+</div>
+
+
+
+<div class="form-container">
+  <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
+    <div class="box">
+      <h1 class="header">User Login</h1>
+
+      <!--Username entry box, make it required, formControlName = userUserName-->
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" class="form-control" formControlName="userUserName" required>
+      </mat-form-field>
+      <!--Password entry box, set the type to password so each letter is blacked out, make it a required field-->
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" class="form-control" formControlName="userPassword" required>
+      </mat-form-field>
+      <div class="recovery-links">
+        <!--Create the hyperlinks for forgotten passwords/usernames-->
+        <a routerLink="/usernamerecovery" style="color: red">Forgot Username?</a>
+        <a routerLink="/passwordrecovery" style="color: red">Forgot Password?</a>
+        
+      </div>
+      <!--Create contineu and trainer login buttons-->
+      <div class="button-group">
+        <button mat-flat-button color="primary" class="continue" style="font-family: Arial" type="submit">Log
+          In</button>
+      </div>
+    </div>
+    <!--Create another register button for users who don't have an account-->
+  </form>
+  <div class="register-container colored-pane">
+    <p class="register">Don't have an account?</p>
+    <button mat-flat-button color="primary" routerLink="/registration" class="register" class="btn btn-secondary"
+      type="register">Register</button>
+      
+  </div>
+
+  
+</div>

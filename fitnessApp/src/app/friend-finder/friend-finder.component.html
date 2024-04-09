@@ -1,0 +1,95 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-decode/3.1.2/index.min.js"></script>
+
+</head>
+<div class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <mat-card class="friendFinderContentCard">
+        <mat-card-header class="header">
+          <mat-card-title>Friend Finder</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="friendFinderContent">
+          <div class="container-fluid h-100">
+            <div class="row justify-content-center align-items-start h-100">
+              <div class="col-auto w-100">
+                <mat-form-field class="">
+                  <mat-label>Search</mat-label>
+                  <input matInput [(ngModel)]="searchEntry" [ngModelOptions]="{standalone: true}" id="searchEntry">
+                  <button mat-icon-button matSuffix *ngIf="searchEntry" (click)="searchUser()">
+                    <mat-icon>search</mat-icon>
+                  </button>
+                  <button mat-icon-button matSuffix *ngIf="searchEntry" (click)="searchEntry=''">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid h-100">
+            <!-- <div class="row align-items-start h-100">
+              <div class="col-5">
+                <div class="d-flex justify-content-start">
+                  <div class="new-row">
+                    <div *ngFor="let username of usernames">
+                      <button class="tempuserbutton">submit</button>
+                      <mat-label>{{ username }}</mat-label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="d-flex justify-content-end">
+                </div>
+                <div class="row h-100">
+                </div>
+              </div>
+            </div> -->
+
+            <div class="row h-100">
+              <!-- Recommendations -->
+              <div class="col-lg-6 p-3 h-100" *ngIf="!searchEntry">
+                <h2>Other Users</h2>
+                <div class="py-2 cur-pointer overflow-auto" *ngFor="let users of usersArray"
+                  (click)="checkUser()">
+                  <img class="mr-3" src="temp_user_image.png">
+                  <mat-label>{{users.username}}</mat-label>
+                </div>
+              </div>
+              <!-- Searcing Users -->
+              <div class="col-lg-6 p-3 h-100" *ngIf="searchEntry">
+                <h2>Search results</h2>
+                <div class="py-2 cur-pointer overflow-auto" (click)="checkUser()">
+                  <img class="mr-3" src="temp_user_image.png">
+                  <mat-label>{{searchedUsers}}</mat-label>
+                </div>
+              </div>
+
+              <!-- Friend requests -->
+              <div class="friendRequest col-lg-6 p-3 h-100">
+                <h2>Friend Requests</h2>
+                <div class="py-2 overflow-auto" *ngFor="let user of tempFriendRequests">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <img class="mr-3" src="temp_user_image.png">
+                      <mat-label>{{user}}</mat-label>
+                    </div>
+                    <div class="d-flex gap-3">
+                      <button mat-flat-button color="primary">
+                        <mat-icon class="m-0">done</mat-icon>
+                      </button>
+                      <button mat-flat-button color="warn">
+                        <mat-icon class="m-0">close</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

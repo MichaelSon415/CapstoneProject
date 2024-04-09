@@ -1,0 +1,59 @@
+body {
+    background: #D0E8D7;
+    border-radius: 25px;
+    position: absolute;
+    left: 33.81%;
+    right: 1.57%;
+    top: 9.96%;
+    bottom: 1.07%;
+
+    font-family: 'NATS';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    display: flex;
+    letter-spacing: 0.44px;
+    color: #002112;
+}
+
+hr {
+    clear: both;
+    border: 1px solid grey;
+    width: 80%;
+    margin: auto;
+}
+
+mat-grid-tile {
+    font-family: 'NATS';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    display: flex;
+    letter-spacing: 0.44px;
+    color: #002112;
+}
+
+h1 {
+    color: black;
+    font-size: 30px;
+}
+
+mat-grid-tile-header {
+
+    left: 37.01%;
+    right: 36.81%;
+    top: 12.6%;
+    bottom: 84.77%;
+
+    font-family: 'NATS';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 24px;
+    /* or 48% */
+
+    display: flex;
+    align-items: left;
+    letter-spacing: 0.44px;
+    color: #002112;
+}

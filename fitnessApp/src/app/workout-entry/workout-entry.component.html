@@ -1,0 +1,50 @@
+<button routerLink="">Component Paths</button>
+<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <button routerLink="">Component Paths</button>
+        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="green-background">
+        <div class = "green-top">
+            
+            <label class = "title">Workout Entry</label>
+        </div>
+        <form [formGroup]="workoutEntryForm" (ngSubmit)="onSubmit()" class="entry-details">
+            <label class="text">Workout Name</label>
+            <select id="workoutName" formControlName="workoutOption" class="custom-select" required>
+                <option value="" selected disabled>Select an option</option>
+                <option *ngFor="let option of workoutOptions" [value]="option">{{ option }}</option>
+            </select>
+        
+            <p></p>
+            <label class="text">Workout Type</label>
+            <select id="workoutType" formControlName="workoutType" class="custom-select" required>
+                <option value="" selected disabled>Select an option</option>
+                <option *ngFor="let option of workoutTypes" [value]="option">{{ option }}</option>
+            </select>
+        
+            <p></p>
+            <label class="text">Number of Sets</label>
+            <input id="sets" formControlName="sets" matInput type="number" class="form-control" required min = "1">
+        
+            <p></p>
+            <label class="text">Number of Reps</label>
+            <input id="reps" formControlName="reps" matInput type="number" class="form-control" required min = "1">
+            
+            <button class="submit-button" type="submit" [disabled]="!workoutEntryForm.valid">Submit</button>
+        </form>
+        
+        
+    </div>
+</body>
+</html>

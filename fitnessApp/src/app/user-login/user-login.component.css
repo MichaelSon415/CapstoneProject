@@ -1,0 +1,56 @@
+.loading-overlay {
+    position: fixed;
+    
+    width: 100%;
+    height: 100%;
+    background: #4DFFB2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.spinner {
+    border: 15px solid rgb(83, 78, 78);
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+.welcome-message {
+    margin-top: 4%;
+    font-size: 100px; 
+    width: 100%;
+}
+  
+
+
+@keyframes spin {
+
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+    0%, 100% {
+        border-top-color: #fff;
+        border-right-color: rgb(83, 78, 78);
+        border-bottom-color: rgb(83, 78, 78);
+        border-left-color: rgb(83, 78, 78);
+    }
+    25% {
+        border-top-color: rgb(83, 78, 78);
+        border-right-color: #fff;
+        border-bottom-color: rgb(83, 78, 78);
+        border-left-color: rgb(83, 78, 78);
+    }
+    50% {
+        border-top-color: rgb(83, 78, 78);
+        border-right-color: rgb(83, 78, 78);
+        border-bottom-color: #fff;
+        border-left-color: rgb(83, 78, 78);
+    }
+    75% {
+        border-top-color: rgb(83, 78, 78);
+        border-right-color: rgb(83, 78, 78);
+        border-bottom-color: rgb(83, 78, 78);
+        border-left-color: #fff;
+    }
+}

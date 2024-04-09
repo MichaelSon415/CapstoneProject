@@ -1,0 +1,23 @@
+::ng-deep .mdc-form-field label {
+  margin-bottom: 0 !important;
+}
+
+.form-question {
+  align-items: center;
+}
+
+.form-question label {
+  display: inline-block !important;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+::ng-deep .mat-mdc-radio-group {
+  margin: 0.5rem 0
+}
+
+.secretbutton{
+  width: 100%;
+  height: 10%;
+  background-color: #4DFFB2;
+}

@@ -1,0 +1,21 @@
+<div class="form-container">
+  <form [formGroup]="usernameRecoveryForm" class="contact-form" (ngSubmit)="sendEmail(emailForm)" #emailForm>
+    <div class="box">
+      <h1 class="header">Username Recovery</h1>
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" name="user_email" matInput type="email">
+
+      </mat-form-field>
+
+      <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+            <div class="tool-tip" matTooltip=" Please fill out all required fields"
+            [matTooltipDisabled]="usernameRecoveryForm.valid">
+            <button mat-flat-button color="primary" class="submit-button w-100" type="submit"
+                [disabled]="!usernameRecoveryForm.valid">Submit</button>
+            </div>
+    </div>
+  </form>
+  <div class="colored-pane"></div>
+</div>

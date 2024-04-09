@@ -1,0 +1,154 @@
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+mat-sidenav-container {
+    height: 100vh;
+}
+
+.outer-sidenav {
+    width: 10vw;
+    background-color: var(--primary---primary--container);
+}
+
+.inner-sidenav {
+    width: 20vw;
+}
+
+.horizontal-sidenav {
+    flex-direction: column;
+    align-items: center;
+}
+.navigation-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.outer-sidenav .navigation-items {
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.outer-sidenav .navigation-items button {
+    border-radius: 1rem;
+}
+
+.outer-sidenav .navigation-items button:hover {
+    background-color: var(--tertiary---tertiary--container);
+}
+
+button.active {
+    background-color: var(--tertiary---tertiary--container);
+}
+
+.navigation-items button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    padding: 1rem;
+}
+
+.navigation-items button mat-icon {
+    margin: 0.25rem;
+    height: fit-content;
+    width: fit-content;
+}
+
+.inner-sidenav {
+    border-right: 1px solid var(--primary---primary);
+}
+
+.inner-sidenav .navigation-items button {
+    border-radius: 0;
+    align-items: start;
+    text-align: left;
+    border-bottom: 1px solid var(--primary---primary);
+}
+
+.inner-sidenav .navigation-items button * {
+    margin: 0;
+}
+
+/* .navigation-items button span {
+    font-size: 1.25rem;
+}
+
+.navigation-items button p {
+    font-size: 1rem;
+} */
+
+/* .inner-sidenav-container>.mat-sidenav-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+@media (max-width: 575px) {
+    .top-nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        height: 6rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: var(--primary---primary--container);
+        color: var(--primary---primary);
+    }
+
+    .top-nav-bar button {
+        height: 5rem;
+        width: 5rem;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-nav-bar h1 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        text-align: center;
+        margin: 0;
+    }
+
+    .bottom-nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: var(--primary---primary--container);
+        height: 6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    ::ng-deep .mat-mdc-tab-header .mdc-tab {
+        height: 6rem !important;
+        padding: 0;
+        width: 20vw;
+        min-width: 0 !important;
+    }
+
+    ::ng-deep .mdc-tab__text-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+
+    mat-icon {
+        height: fit-content;
+        width: fit-content;
+        font-size: 2.5rem;
+    }
+}

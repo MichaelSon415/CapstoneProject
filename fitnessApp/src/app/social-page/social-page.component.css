@@ -1,0 +1,70 @@
+/* mat-card-content {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+    height: 75px;
+} */
+
+
+
+.message {
+    height: 200px;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    /* or set to the height of your parent container */
+}
+
+.temp_user_image {
+    width: 50px;
+    height: 50px;
+}
+
+.tempuserbutton {
+    position: relative;
+    width: 125px;
+    height: 125px;
+    overflow: hidden;
+    border-radius: 2%;
+}
+
+.tempuserbutton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; object-position: center; 
+}
+  
+
+.line {
+    border-width: 2px;
+    color: black;
+}
+
+.title-label {
+    font-weight: 500; 
+    font-size: 26px;
+    font-style: arial;
+}
+
+.label{
+    font-size: 16px;
+    font-style: arial;
+}
+
+.addPerson {
+    transform: scale(2);
+}

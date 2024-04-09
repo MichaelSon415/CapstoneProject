@@ -1,0 +1,96 @@
+<!-- <button routerLink="">Component Paths</button>
+<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head> -->
+
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+      <div class="col-lg-10">
+        <mat-card class="socialPageContentCard align-items-center">
+  
+  
+          <mat-card-header class="header">
+            <mat-card-title>Group Page</mat-card-title>
+  
+          </mat-card-header>
+  
+          <mat-card-content class="groupPageContent">
+  
+            <div class="container-fluid h-100">
+
+              <div class="justify-content-center h-100">
+                <button mat-flat-button color="clear" class="" [routerLink]="['../group_invite']">
+                  <mat-icon class="addPerson">person_add</mat-icon>
+                </button>
+              </div>
+
+              <div class="row justify-content-center align-items-start h-100">
+                <div class="col-auto">
+                  
+  
+                  <div class="container-fluid h-100">
+                    <div class="row justify-content-center align-items-start h-100">
+                      <div class="col-auto">
+                        
+                        <img src="temp_user_image.png">
+                        <mat-label class="user-name">
+                          <div class="py-2 cur-pointer overflow-auto" >
+                          <mat-label><h1>{{groupName}}</h1></mat-label>
+                        </div>
+                        </mat-label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+  
+            <hr mat-line class="line">
+  
+  
+            <mat-label class="title-label">
+                <h1>Description</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </mat-label>
+  
+  
+  
+            <hr mat-line class="line">
+  
+            <mat-label class="title-label">
+                <h1>Goals</h1>
+                <ul>
+                    <li>Workout More</li>
+                    <li>Eat Better</li>
+                    <li>Lift a Building</li>
+                </ul>
+            </mat-label>
+  
+  
+            <hr mat-line class="line">
+  
+  
+            <mat-label class="title-label">
+                <h1>Members</h1>
+                <div class="py-2 cur-pointer overflow-auto" *ngFor="let member of memberNames" (click)="checkMember()">
+                    <img class="mr-3" src="../../assets/account-circle.png">
+                    <mat-label>{{member}}</mat-label>
+                </div>
+            </mat-label>
+  
+  
+  
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  <!-- </html> -->

@@ -1,0 +1,91 @@
+<!-- Baseline Code -->
+<button routerLink="">Component Paths</button>
+
+
+<div class="form-container">
+
+    <!--Header text for green rectangle-->
+    <!-- <div class="headerSideBarContainer">
+  <h1 class="headerSideBar">Welcome to *App Name*!</h1>
+  </div> -->
+
+    <div class="box-container">
+        <form [formGroup]="RegistrationGoals">
+
+            <!--Title for box containing info-->
+            <h2 class="headerBox">What are your Fitness Goals?</h2>
+
+            <!--Text Box 1 (Goal?)-->
+            <div class="container">
+                <label class="goalTitle">Goal</label>
+                <mat-form-field class="example-form">
+                    <mat-label>Input goal here.</mat-label>
+                    <input id="initialGoal" matInput type="text" formControlName="initialGoal">
+                </mat-form-field>
+            </div>
+
+            <!--Dropdown 1--> <!--The dropdown for fitness level-->
+            <div class="container">
+                <label class="activityTitle">Physical Activity Level</label>
+                <mat-form-field class="example-form">
+                    <mat-label>Select activity level here.</mat-label>
+                    <mat-select [(value)]="activityDropDown" formControlName="initialActivityLevel">
+                        <mat-option value="None">None</mat-option>
+                        <mat-option value="Low">Low</mat-option>
+                        <mat-option value="Medium">Medium</mat-option>
+                        <mat-option value="High">High</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!--Radio Button 1--> <!--The radio buttons for checking disabilities-->
+            <fieldset class="container">
+                <legend class="radioLabel">Any disabilities? If yes, list them here.</legend>
+                <mat-radio-group aria-label="Option 1" formControlName="DisabilityCheck">
+                    <mat-radio-button inputType='radio' value="Yes"
+                        (click)='toggleEnableDisability()'>Yes</mat-radio-button>
+                    <mat-radio-button inputType='radio' value="No"
+                        (click)='toggleDisableDisability()'>No</mat-radio-button>
+                </mat-radio-group>
+            </fieldset>
+            <!--Text Box 2--> <!--Text Box Description of Disabilities-->
+            <!-- <p></p> -->
+            <div class="container">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a descriptive list here</mat-label>
+                    <textarea matInput placeholder="Ex. Bad Heart, Lost Limb, etc... "
+                        formControlName="DisabilityText"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!--Radio Button 2--> <!--The radio buttons for checking allergies-->
+            <fieldset class="container">
+                <legend class="radioLabel">Any food allergies? If yes, list them here.</legend>
+                <mat-radio-group aria-label="Option 2" formControlName="AllergyCheck">
+                    <mat-radio-button inputType='radio' value="Yes"
+                        (click)='toggleEnableAllergy()'>Yes</mat-radio-button>
+                    <mat-radio-button inputType='radio' value="No"
+                        (click)='toggleDisableAllergy()'>No</mat-radio-button>
+                </mat-radio-group>
+            </fieldset>
+
+            <!--Text Box 2--> <!--Text Box Description of Disabilities-->
+            <!-- <p></p> -->
+            <div class="container">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a descriptive list here</mat-label>
+                    <textarea matInput placeholder="Ex. Fish, gluten, etc... " formControlName="AllergyText"></textarea>
+                </mat-form-field>
+            </div>
+
+
+            <!--Submit/Continue Button-->
+            <div class="buttonParent">
+                <button mat-button="button" class="button" [disabled]="!RegistrationGoals.valid"
+                    (click)="getEntry()">Continue</button>
+            </div>
+
+
+        </form>>
+    </div>>
+</div>

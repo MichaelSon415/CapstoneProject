@@ -1,0 +1,72 @@
+<div class="form-container">
+<!--  <form [formGroup]="registrationForm" (ngSubmit)="register()">  --> 
+    <form [formGroup]="registrationForm" >
+    <div class="box">
+      <h1 class="header">Registration</h1>
+
+      <!--Username entry box, make it required, formControlName = trainerUserName-->
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" class="form-control" formControlName="firstName" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" class="form-control" formControlName="lastName" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" class="form-control" formControlName="email" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput class="form-control" formControlName="dateOfBirth" required [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="registrationForm.get('dateOfBirth')!.hasError('underage')">
+          You must be at least 18 years old.
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required
+          [ngModel]="formattedDate" (ngModelChange)="onDateChange($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>  -->
+
+      <div class="form-group form-question">
+        <label>Are you a Trainer?</label>
+        <mat-radio-group aria-label="Are you a Trainer?" formControlName=trainerCheck>
+          <mat-radio-button inputType='radio' value="yes">Yes</mat-radio-button>
+          <mat-radio-button inputType='radio' value="no">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Create Username</mat-label>
+        <input matInput id="username" type="text" class="form-control" formControlName="username" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" class="form-control" formControlName="password" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" class="form-control" formControlName="confirmPassword" required>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-flat-button color="primary" class="continue" [disabled]="!registrationForm.valid"
+          style="font-family: Arial" type="submit" (click) = "register()">Register</button>
+      </div>
+    </div>
+  </form>
+  <div class="colored-pane">
+  </div>
+</div>

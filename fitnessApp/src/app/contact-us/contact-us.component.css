@@ -1,0 +1,21 @@
+/* .message {
+    min-height: 30vh;
+} */
+
+/* .submit-button {
+    background-color: #006C46;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+    height: 2%;
+    margin-left: 22%;
+} */
+
+.submit-button:hover {
+    background-color: #e2314f;
+    /* When user hovers over change color */
+
+}

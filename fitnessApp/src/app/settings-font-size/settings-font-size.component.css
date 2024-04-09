@@ -1,0 +1,57 @@
+/* mat-card-content {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+    height: 75px;
+} */
+
+
+
+.message {
+    height: 200px;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    /* or set to the height of your parent container */
+}
+
+
+
+.line {
+    border-width: 2px;
+    color: black;
+}
+
+.title-label {
+    font-weight: 500;
+    font-style: arial;
+}
+
+.small{
+    font-size: 11px;
+}
+
+
+.large{
+    font-size: 22px;
+}
+
+.huge{
+    font-size: 26px;
+}
+
+  

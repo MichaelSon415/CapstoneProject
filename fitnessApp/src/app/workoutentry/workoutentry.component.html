@@ -1,0 +1,65 @@
+<div class="container d-flex">
+    <div class="row flex-grow-1 align-items-center justify-content-center">
+        <div class="col-lg-10">
+            <mat-card class="workoutEntry align-items-center">
+                <mat-card-header class="header">
+                    <mat-card-title>{{ editingWorkoutHistory ? 'Workout Edit' : 'Workout Entry' }}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="workoutEntryContent">
+
+                    <form [formGroup]="workoutEntryForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Muscle Group</mat-label>
+                            <mat-select class="muscleGroup" id="muscleGroup" formControlName="muscleGroup"
+                                [(value)]="muscleGroupValue" (valueChange)="fetchWorkoutList()" required>
+                                <!-- <mat-option disabled value="" selected>Select an option</mat-option> -->
+                                <mat-option *ngFor="let option of muscleGroups" [value]="option.value">{{ option.label
+                                    }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Exercise</mat-label>
+                            <mat-select class="exercise" id="exercise" formControlName="exercise"
+                                [(value)]="selectedExercise" (valueChange)="checkOtherInput()" required>
+                                <mat-option *ngFor="let option of exercisesList" [value]="option.name">{{ option.name
+                                    }}</mat-option>
+                                <mat-option value="Other">Other</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Other Exercise</mat-label>
+                            <input matInput formControlName="otherExercise">
+                        </mat-form-field>
+
+                        <!--mat form field, mat input asking the user for a number greater than or equal to 1-->
+                        <mat-form-field appearance="fill" class="matFormFieldDropDown">
+                            <mat-label class="text">Number of Sets</mat-label>
+                            <input matInput id="sets" formControlName="sets" type="number" required min="1">
+                        </mat-form-field>
+
+                        <!--mat form field, mat input asking the user for a number greater than or equal to 1-->
+                        <mat-form-field appearance="fill" class="matFormFieldDropDown">
+                            <mat-label class="text">Number of Reps</mat-label>
+                            <input matInput id="reps" formControlName="reps" type="number" required min="1">
+                        </mat-form-field>
+
+                        <!--Button is angular material also added a mattooltip module so when user hovers over button (and form is not valid) 
+            the user will be aware that they need to add all form fields before they can submit-->
+                        <div class="tool-tip" matTooltip=" Please fill out all required fields"
+                            [matTooltipDisabled]="workoutEntryForm.valid">
+                            <button mat-flat-button color="primary" class="submit-button w-100" type="submit"
+                                [disabled]="!workoutEntryForm.valid">{{ editingWorkoutHistory ? 'Edit' : 'Submit'
+                                }}</button>
+                        </div>
+                        <button mat-flat-button color="primary" class="w-100 mt-3"
+                            (click)="goToAnotherPage('workout_info')">Back to Workout Info</button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

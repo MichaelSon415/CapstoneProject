@@ -1,0 +1,134 @@
+<!-- <div *ngIf="loadingService.loading$ | async" class="loading-overlay">
+    <div class="spinner"></div>
+    <mat-label class="message fixed-top text-center">Updating...</mat-label>
+  
+  </div> -->
+
+<div *ngIf="!(loadingService.loading$ | async)" class="container d-flex">
+  <div class="row flex-grow-1 align-items-center justify-content-center">
+    <div class="col-lg-10">
+      <mat-card class="account align-items-center">
+        <mat-card-header class="header">
+          <mat-card-title>Account</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="accountContent">
+
+          <mat-label class="link" (click)="fileInput.click()">Change Picture</mat-label>
+
+
+          <div class="container-fluid h-100">
+            <div class="row justify-content-center align-items-start h-100">
+              <div class="col-auto">
+                <div class="tempuserbutton">
+                  <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+                  <img [src]="profilePicture" alt="Profile Picture">
+
+
+                </div>
+                <div class="text-center">
+                  <mat-label>{{userName}}</mat-label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="row h-100 my-5">
+                        <mat-label class="col fs-6">Switch kCal ↔ kJ</mat-label>
+                        <mat-slide-toggle color="primary" formControlName="kCalToggle"
+                          class="toggle col-2"></mat-slide-toggle>
+                      </div> -->
+
+          <hr mat-line class="line">
+
+          <div class="container">
+
+            <div class="row">
+              <!-- Left Column -->
+              <div class="col-md-6">
+
+                <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+                  <mat-label class="title">Change Name</mat-label>
+                  <p></p>
+                  <mat-label>First Name</mat-label>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Enter Here</mat-label>
+                    <input matInput placeholder="First Name" formControlName="firstName" required>
+                  </mat-form-field>
+
+                  <mat-label>Last Name</mat-label>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Enter Here</mat-label>
+                    <input matInput placeholder="Last Name" formControlName="lastName" required>
+                  </mat-form-field>
+
+                  <!-- <mat-form-field appearance="fill">
+                        <mat-label>Trainer?</mat-label>
+                        <mat-select formControlName="trainer">
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
+
+                  <div class="tool-tip" matTooltip="Please fill out all required fields"
+                    [matTooltipDisabled]="accountForm.valid">
+                    <button mat-flat-button color="primary" class="submit-button w-100" type="submit"
+                      [disabled]="!accountForm.valid">Submit</button>
+                  </div>
+                </form>
+
+
+
+
+
+
+                <mat-card class="account align-items-center">
+
+
+
+                </mat-card>
+              </div>
+
+
+              <div class="col-md-1">
+
+                <div class="verticalline"></div>
+              </div>
+
+              <!-- Right Column -->
+              <div class="col-md-5">
+                <mat-label class="title">Blocked Contacts</mat-label>
+
+                <button mat-flat-button (click)="goToAnotherPage('accounttermination')" class="submit-button w-100"
+                  color="warn">Delete Account</button>
+
+
+
+
+                <!--Right Column-->
+                <mat-card-content>
+
+
+                </mat-card-content>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

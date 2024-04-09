@@ -1,0 +1,250 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    /*Need to alight items in the center of the screen according to figma*/
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.green-background {
+    background-color: #D0E8D7;
+    position: center; /* Use *something* positioning */
+    /*We'll use percentages so that the green box will be in the 
+    perfect spot no matter the screen size*/
+    top: 10%; /* move box down */
+    left: 10%; /* Move the box to the right*/
+    height: 90%;
+    width: 90%;
+    padding: 0; /* Add padding for spacing */
+    border-radius: 20px; /* Rounded corners */
+    /*nav-down: 5px;*/
+}
+
+.title-label {
+    font-weight: 500; 
+    font-size: 26px;
+    font-style: arial;
+}
+
+
+.temp_user_image{
+    width:50px;
+    height: 50px
+}
+
+.tempuserbutton{
+    background-image: url('temp_user_image.png');
+    background-size: cover; /* Adjust as needed */
+    margin-left: 5%;
+    margin-top: 5%;
+    height: 150px;
+    width: 150px;
+
+    cursor: default;
+}
+
+.line{
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.clientname{
+    font-weight: bold;
+    font-size: 56px;
+}
+
+
+.mentalwellnesspopupbutton{
+    background-color: #e2314f; 
+    /*background-color: #006C46; */
+
+    color: white; /*font to white*/
+    align-items: center; 
+
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-left: 5%;
+    width: 80%;
+}
+
+
+button[type=send-button]:hover {
+    background-color: #006C46; /* When user hovers over change color */
+    /*background-color: #e2314f; /* When user hovers over change color */
+
+  }
+
+
+.client-details{
+    font-size: 56px;
+    font-weight: bold;
+    margin-left: 5%;
+}
+
+
+.line{
+    border: 2px solid black; 
+    width: 80%;
+}
+
+
+.workoutprogressbutton{
+    /*cover the button with an image*/
+    background-image: url('Workout_progress.png');
+    background-size: cover; 
+    /*Create height and width*/
+    margin-left: 5%;
+    margin-top: 1%;
+    height: 175px;
+    width: 200px;
+
+    cursor: default;
+}
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 2rem;
+}
+
+.container {
+    background-color: var(--secondary---secondary--container);
+    border-radius: 25px;
+    padding: 2rem;
+}
+
+.col,
+.col-sm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    padding: 1rem;
+}
+
+.col>h1,
+.col-sm>h1 {
+    width: 100%;
+    text-align: start;
+}
+
+.col button,
+.col-sm button {
+    border-radius: 90px;
+    height: auto;
+    padding: 0.5rem 1rem;
+}
+
+.col-sm>*:not(:first-child) {
+    margin: auto;
+}
+
+.col-sm ul {
+    width: 80%;
+    margin: 0;
+}
+
+.img-filler {
+    max-width: 75%;
+    border-radius: 10px;
+}
+
+.mood-selectors button {
+    padding: 0;
+    height: 40px;
+    margin: 0.5rem;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: flex;
+}
+
+.chart-container {
+    width: 100%;
+    padding: 2rem;
+}
+
+.chart-container canvas {
+    width: 100%;
+    background-color: var(--secondary---on--secondary);
+    border-radius: 25px;
+}
+
+@media screen and (max-width: 575px) {
+    body {
+        display: inherit;
+        justify-content: inherit;
+        align-items: inherit;
+        padding: 0;
+    }
+
+    .container {
+        background-color: inherit;
+        border-radius: inherit;
+        padding: 6rem 2rem;
+    }
+
+    .col,
+    .col-sm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .row {
+        padding: 1rem;
+    }
+
+    .col button h1 {
+        margin: 0;
+    }
+
+    .mobile-only {
+        display: flex;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .chart-container {
+        height: fit-content;
+        width: 100%;
+        padding: 0;
+    }
+
+    .chart-container canvas {
+        height: fit-content;
+    }
+}
+
+.chart-container {
+    width: 20vw; 
+    height: 30vh; 
+    padding: 2rem;
+    margin: auto;
+    background-color: var(--secondary---on--secondary);
+    border-radius: 25px;
+}
+
+.chart-container canvas {
+    width: 100%; 
+    height: 100%; 
+}

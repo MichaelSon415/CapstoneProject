@@ -1,0 +1,72 @@
+<button routerLink="">Component Paths</button>
+
+<body>
+    <mat-grid-list cols="12" rowHeight="32.6%" gutterSize="5px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style]="tile.CSSStyle">
+
+            <ng-container *ngIf="tile.text=='Calorie Information'">
+                <img class="calories" [src]="tile.Image">
+            </ng-container>
+
+            <ng-container *ngIf="tile.text=='Workout Information'">
+                <img class="calories" [src]="tile.Image">
+            </ng-container>
+
+            <ng-container *ngIf="tile.text=='Achievements'">
+                <div style="background-color:lightgray; border-radius: 25px;">
+                    <mat-list style="width:100%;">
+                        <mat-list-item>Recent Achievements </mat-list-item>
+                        <mat-list-item> 😃 </mat-list-item>
+                        <mat-list-item> 😃 </mat-list-item>
+                    </mat-list>
+                </div>
+
+            </ng-container>
+
+            <ng-container *ngIf="tile.text=='Goals'">
+                <mat-list>
+                    <mat-list-item>- Lose 10 pounds in 2 months</mat-list-item>
+                    <mat-list-item>- Feel good about myself</mat-list-item>
+                </mat-list>
+            </ng-container>
+
+            <ng-container *ngIf="tile.text=='Mood'">
+                <mat-list>
+                    <mat-list-item>How are you feeling today? </mat-list-item>
+                    <mat-list-item style="width:100%; text-align:center;"> 😃 😓 😡 😘 😢 😖 😔 </mat-list-item>
+                    <mat-list-item style="width:100%; text-align:center;">
+                        <span matListItemLine style="display:inline; float:left;">Good </span>
+                        <span matListItemLine style="display:inline; width:30%; height:150px; display:inline-block">
+                            Neutral</span>
+                        <span matListItemLine style="display:inline; float:right;">Bad</span>
+                    </mat-list-item>
+                </mat-list>
+            </ng-container>
+
+            <ng-container *ngIf="tile.text=='Client Information'">
+                <div class="row">
+                    <div class="column">
+                        <figcaption>Max</figcaption>
+                        <img [src]="tile.Image" alt="Snow" style="width:60%">
+                    </div>
+                    <div class="column">
+                        <figcaption>Kenry</figcaption>
+                        <img [src]="tile.Image" alt="Forest" style="width:60%">
+                    </div>
+                    <div class="column">
+                        <figcaption>Michael</figcaption>
+                        <img [src]="tile.Image" alt="Mountains" style="width:60%">
+                    </div>
+                </div>
+                <!-- <img class="calories" [src]="tile.Image"> -->
+            </ng-container>
+
+
+            <mat-grid-tile-header [style.background]="'#D0E8D7'">
+                <h1>{{tile.text}}</h1>
+            </mat-grid-tile-header>
+
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</body>

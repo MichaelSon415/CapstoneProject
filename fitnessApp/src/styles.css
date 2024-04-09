@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --background: #FBFDF8;
+    --on--background: #000000;
+    --primary---primary: #006C46;
+    --primary---on--primary: #FFFFFF;
+    --primary---primary--container: #4DFFB2;
+    --primary---on--primary--container: #002112;
+    --secondary---secondary: #4E6356;
+    --secondary---on--secondary: #FFFFFF;
+    --secondary---secondary--container: #D0E8D7;
+    --secondary---on--secondary--container: #0B1F15;
+    --tertiary---tertiary: #3C6472;
+    --tertiary---on--tertiary: #FFFFFF;
+    --tertiary---tertiary--container: #C0E9F9;
+    --tertiary---on--tertiary--container: #001F28;
+    --error---error: #BA1A1A;
+    --error---on--error: #FFFFFF;
+    --error---error--container: #FFDAD6;
+    --error---on--error--container: #410002;
+    --max-width: 575px;
+}
+
+html,
+body {
+    min-height: 100%;
+    /*height: fit-content;*/
+    /* commented out so in depth workout component */
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: var(--background);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
